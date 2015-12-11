@@ -75,15 +75,6 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     @ReactProp(name =  ON_NAVIGATION_STATE_CHANGE)
     public void setOnNavigationStateChange(ReactWebView view,Boolean value){
         // Unrealized
-//        view.setWebChromeClient(new WebChromeClient() {
-//            @Override
-//            public void onProgressChanged(WebView view, int newProgress) {
-//                WritableMap event = Arguments.createMap();
-//                ReactContext reactContext = (ReactContext) view.getContext();
-//                reactContext.getJSModule(RCTEventEmitter.class)
-//                        .receiveEvent(view.getId(), "topChange", event);
-//            }
-//        });
     }
 
     @ReactProp(name = RENDER_ERROR)
