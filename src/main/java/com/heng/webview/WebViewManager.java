@@ -4,7 +4,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.facebook.react.bridge.ReadableArray;
-import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -52,44 +51,44 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         view.getSettings().setLoadsImagesAutomatically(automaticallyAdjustContentInsets);
     }
 
-   @ReactProp(name = BOUNCES)
-    public void setBounces(ReactWebView view,boolean bounces){
-       // Unrealized
-    }
+//   @ReactProp(name = BOUNCES)
+//    public void setBounces(ReactWebView view,boolean bounces){
+//       // Unrealized
+//    }
 
-    @ReactProp(name = CONTENT_INSET)
-    public void setContentInset(ReactWebView view,ReadableMap map){
-        int top = map.getInt("top");
-        int left = map.getInt("left");
-        int bottom = map.getInt("bottom");
-        int right = map.getInt("right");
-        view.setPadding(left, top, right, bottom);
-    }
+//    @ReactProp(name = CONTENT_INSET)
+//    public void setContentInset(ReactWebView view,ReadableMap map){
+//        int top = map.getInt("top");
+//        int left = map.getInt("left");
+//        int bottom = map.getInt("bottom");
+//        int right = map.getInt("right");
+//        view.setPadding(left, top, right, bottom);
+//    }
 
     @ReactProp(name = HTML)
     public void setHtml(ReactWebView view,String html){
         view.loadData(html, "text/html", "UTF-8");
     }
 
-    @ReactProp(name = INJECTED_JAVA_SCRIPT)
-    public void setInjectedJavaScript(ReactWebView view, final String javaScript){
-        // Unrealized
-    }
+//    @ReactProp(name = INJECTED_JAVA_SCRIPT)
+//    public void setInjectedJavaScript(ReactWebView view, final String javaScript){
+//        // Unrealized
+//    }
 
-    @ReactProp(name =  ON_NAVIGATION_STATE_CHANGE)
-    public void setOnNavigationStateChange(ReactWebView view,Boolean value){
-        // Unrealized
-    }
+//    @ReactProp(name =  ON_NAVIGATION_STATE_CHANGE)
+//    public void setOnNavigationStateChange(ReactWebView view,Boolean value){
+//        // Unrealized
+//    }
 
-    @ReactProp(name = RENDER_ERROR)
-    public void setRenderError(ReactWebView view,Boolean value){
-        // Unrealized
-    }
+//    @ReactProp(name = RENDER_ERROR)
+//    public void setRenderError(ReactWebView view,Boolean value){
+//        // Unrealized
+//    }
 
-    @ReactProp(name = RENDER_LOADING)
-    public void setRenderLoading(ReactWebView view,Boolean value){
-        // Unrealized
-    }
+//    @ReactProp(name = RENDER_LOADING)
+//    public void setRenderLoading(ReactWebView view,Boolean value){
+//        // Unrealized
+//    }
 
     @ReactProp(name = SCROLL_ENABLED)
     public void setScrollEnabled(ReactWebView view,boolean scrollEnable){
@@ -97,10 +96,10 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         view.setHorizontalScrollBarEnabled(scrollEnable);
     }
 
-    @ReactProp(name = START_IN_LOADING_STATE)
-    public void setStartInLoadingState(ReactWebView view,boolean startInLoadingState){
-        // Unrealized
-    }
+//    @ReactProp(name = START_IN_LOADING_STATE)
+//    public void setStartInLoadingState(ReactWebView view,boolean startInLoadingState){
+//        // Unrealized
+//    }
 
     @ReactProp(name = URL)
     public void setUrl(ReactWebView view,String url){

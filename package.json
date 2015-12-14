@@ -1,6 +1,6 @@
 {
   "name": "react-native-webview",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "andorid webview for react-native",
   "main": "index.js",
   "scripts": {

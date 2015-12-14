@@ -1,10 +1,10 @@
 var React = require('react-native');
 
-var { requireNativeComponent,PropTypes,NativeModules } = React;
+var { requireNativeComponent,PropTypes,NativeModules,View } = React;
 
 var UIManager = NativeModules.UIManager;
 
-var NativeWebView = requireNativeComponent('RCTWebView',WheelView);
+var NativeWebView = requireNativeComponent('RCTWebView',WebView);
 
 var WEBVIEW_REF = 'webview';
 
@@ -12,15 +12,8 @@ var WebView = React.createClass({
     propTypes: {
         ...View.propTypes,
         automaticallyAdjustContentInsets: PropTypes.bool,
-//        bounces: PropTypes.bool,
-        contentInset: PropTypes.object,
         html: PropTypes.string,
-//        injectedJavaScript: PropTypes.string,
-//        onNavigationStateChange: PropTypes.func,
-//        renderError: PropTypes.func,
-//        renderLoading: PropTypes.func,
         scrollEnabled: PropTypes.bool,
-//        startInLoadingState: PropTypes.bool,
         url: PropTypes.string,
         javaScriptEnabledAndroid: PropTypes.bool,
     },
