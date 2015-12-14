@@ -1,5 +1,8 @@
 package com.heng.webview;
 
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
@@ -48,6 +51,7 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     public void setAutomaticallyAdjustContentInsets(ReactWebView view,boolean automaticallyAdjustContentInsets){
         view.getSettings().setLoadsImagesAutomatically(automaticallyAdjustContentInsets);
     }
+
    @ReactProp(name = BOUNCES)
     public void setBounces(ReactWebView view,boolean bounces){
        // Unrealized
@@ -75,15 +79,6 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     @ReactProp(name =  ON_NAVIGATION_STATE_CHANGE)
     public void setOnNavigationStateChange(ReactWebView view,Boolean value){
         // Unrealized
-//        view.setWebChromeClient(new WebChromeClient() {
-//            @Override
-//            public void onProgressChanged(WebView view, int newProgress) {
-//                WritableMap event = Arguments.createMap();
-//                ReactContext reactContext = (ReactContext) view.getContext();
-//                reactContext.getJSModule(RCTEventEmitter.class)
-//                        .receiveEvent(view.getId(), "topChange", event);
-//            }
-//        });
     }
 
     @ReactProp(name = RENDER_ERROR)
@@ -109,6 +104,13 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
 
     @ReactProp(name = URL)
     public void setUrl(ReactWebView view,String url){
+        view.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
         view.loadUrl(url);
     }
 
