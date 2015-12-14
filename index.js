@@ -4,8 +4,6 @@ var { requireNativeComponent,PropTypes,NativeModules,View } = React;
 
 var UIManager = NativeModules.UIManager;
 
-var NativeWebView = requireNativeComponent('RCTWebView',WebView);
-
 var WEBVIEW_REF = 'webview';
 
 var WebView = React.createClass({
@@ -16,24 +14,33 @@ var WebView = React.createClass({
         scrollEnabled: PropTypes.bool,
         url: PropTypes.string,
         javaScriptEnabledAndroid: PropTypes.bool,
+        onNavigationStateChange: PropTypes.func
+    },
+    _onNavigationStateChange: function(event){
+        if(this.props.onNavigationStateChange){
+            this.props.onNavigationStateChange(event.nativeEvent);
+        }
+    },
+    _getWebViewHandle: function(){
+        return React.findNodeHandle(this.refs[WEBVIEW_REF]);
     },
     goBack: function(){
         UIManager.dispatchViewManagerCommand(
-            React.findNodeHandle(this.refs.webview),
+            _getWebViewHandle,
             UIManager.RCTWebView.Commands.goBack,
             null,
         );
     },
     goForward: function(){
         UIManager.dispatchViewManagerCommand(
-            React.findNodeHandle(this.refs.webview),
+            _getWebViewHandle,
             UIManager.RCTWebView.Commands.goForward,
             null,
         );
     },
     reload: function(){
         UIManager.dispatchViewManagerCommand(
-            React.findNodeHandle(this.refs.webview),
+            _getWebViewHandle,
             UIManager.RCTWebView.Commands.reload,
             null,
         );
@@ -41,11 +48,14 @@ var WebView = React.createClass({
     render(){
         return(
             <NativeWebView
-                {...this.props}
                 ref={WEBVIEW_REF}
+                {...this.props}
+                onNavigationStateChange={this._onNavigationStateChange}
             />
         );
     }
 });
+
+var NativeWebView = requireNativeComponent('RCTWebView',WebView);
 
 module.exports = WebView;

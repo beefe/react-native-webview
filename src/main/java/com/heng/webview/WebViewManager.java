@@ -1,8 +1,5 @@
 package com.heng.webview;
 
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ReactProp;
@@ -46,8 +43,8 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         return new ReactWebView(reactContext);
     }
 
-    @ReactProp(name = AUTOMATICALLY_ADJUST_CONTENT_INSETS)
-    public void setAutomaticallyAdjustContentInsets(ReactWebView view,boolean automaticallyAdjustContentInsets){
+    @ReactProp(name = AUTOMATICALLY_ADJUST_CONTENT_INSETS,defaultBoolean = true)
+    public void setAutomaticallyAdjustContentInsets(ReactWebView view, boolean automaticallyAdjustContentInsets) {
         view.getSettings().setLoadsImagesAutomatically(automaticallyAdjustContentInsets);
     }
 
@@ -66,19 +63,14 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
 //    }
 
     @ReactProp(name = HTML)
-    public void setHtml(ReactWebView view,String html){
+    public void setHtml(ReactWebView view, String html) {
         view.loadData(html, "text/html", "UTF-8");
     }
 
-//    @ReactProp(name = INJECTED_JAVA_SCRIPT)
-//    public void setInjectedJavaScript(ReactWebView view, final String javaScript){
-//        // Unrealized
-//    }
-
-//    @ReactProp(name =  ON_NAVIGATION_STATE_CHANGE)
-//    public void setOnNavigationStateChange(ReactWebView view,Boolean value){
-//        // Unrealized
-//    }
+    @ReactProp(name = INJECTED_JAVA_SCRIPT)
+    public void setInjectedJavaScript(ReactWebView view, String injectedJavaScript){
+        view.setInjectedJavaScript(injectedJavaScript);
+    }
 
 //    @ReactProp(name = RENDER_ERROR)
 //    public void setRenderError(ReactWebView view,Boolean value){
@@ -90,10 +82,9 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
 //        // Unrealized
 //    }
 
-    @ReactProp(name = SCROLL_ENABLED)
-    public void setScrollEnabled(ReactWebView view,boolean scrollEnable){
-        view.setVerticalScrollBarEnabled(scrollEnable);
-        view.setHorizontalScrollBarEnabled(scrollEnable);
+    @ReactProp(name = SCROLL_ENABLED,defaultBoolean = false)
+    public void setScrollEnabled(ReactWebView view, boolean scrollEnable) {
+        view.setScrollEnabled(scrollEnable);
     }
 
 //    @ReactProp(name = START_IN_LOADING_STATE)
@@ -102,19 +93,12 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
 //    }
 
     @ReactProp(name = URL)
-    public void setUrl(ReactWebView view,String url){
-        view.setWebViewClient(new WebViewClient(){
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
+    public void setUrl(ReactWebView view, String url) {
         view.loadUrl(url);
     }
 
     @ReactProp(name = JAVA_SCRIPT_ENABLE_ANDROID)
-    public void setJavaScriptEnableAndroid(ReactWebView view,boolean javaScriptEnableAndroid){
+    public void setJavaScriptEnableAndroid(ReactWebView view, boolean javaScriptEnableAndroid) {
         view.getSettings().setJavaScriptEnabled(javaScriptEnableAndroid);
     }
 
@@ -122,15 +106,15 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     @Override
     public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of(
-                "goBack",COMMAND_GO_BACK,
-                "goForward",COMMAND_GO_FORWARD,
-                "reload",COMMAND_RELOAD
+                "goBack", COMMAND_GO_BACK,
+                "goForward", COMMAND_GO_FORWARD,
+                "reload", COMMAND_RELOAD
         );
     }
 
     @Override
     public void receiveCommand(ReactWebView root, int commandId, ReadableArray args) {
-        switch (commandId){
+        switch (commandId) {
             case COMMAND_GO_BACK:
                 root.goBack();
                 break;
@@ -149,4 +133,11 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         }
     }
 
+    @Nullable
+    @Override
+    public Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.of(
+                NavigationStateChangeEvent.EVENT_NAME, MapBuilder.of("registrationName", "onNavigationStateChange")
+        );
+    }
 }
