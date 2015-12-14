@@ -120,13 +120,30 @@ var styles = StyleSheet.create({
 
 ## 已经实现的属性和方法
 ### Props
-##### automaticallyAdjustContentInsets  bool
-##### html  string
-##### injectedJavaScript  string
-##### onNavigationStateChange  function
-##### url  string
-##### javaScriptEnabledAndroid  bool
-
+##### automaticallyAdjustContentInsets
+```javascript
+bool
+```
+##### html
+```javascript
+string
+```
+##### injectedJavaScript
+```javascript
+string
+```
+##### onNavigationStateChange
+```javascript
+function
+```
+##### url
+```javascript
+string
+```
+##### javaScriptEnabledAndroid
+```javascript
+bool
+```
 ### method
 ##### goBack
 ##### goForward
