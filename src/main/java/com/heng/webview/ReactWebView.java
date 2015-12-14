@@ -80,9 +80,4 @@ public class ReactWebView extends WebView {
         eventWebClient.setInjectedJavaScript(injectedJavaScript);
     }
 
-    public void setScrollEnabled(boolean scrollEnabled) {
-        setVerticalScrollBarEnabled(scrollEnabled);
-        setHorizontalScrollBarEnabled(scrollEnabled);
-    }
-
 }

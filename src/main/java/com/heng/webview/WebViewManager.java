@@ -18,14 +18,12 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     public static final String REACT_CLASS = "RCTWebView";
 
     public static final String AUTOMATICALLY_ADJUST_CONTENT_INSETS = "automaticallyAdjustContentInsets";
-    public static final String BOUNCES = "bounces";
     public static final String CONTENT_INSET = "contentInset";
     public static final String HTML = "html";
     public static final String INJECTED_JAVA_SCRIPT = "injectedJavaScript";
     public static final String ON_NAVIGATION_STATE_CHANGE = "onNavigationStateChange";
     public static final String RENDER_ERROR = "renderError";
     public static final String RENDER_LOADING = "renderLoading";
-    public static final String SCROLL_ENABLED = "scrollEnabled";
     public static final String START_IN_LOADING_STATE = "startInLoadingState";
     public static final String URL = "url";
     public static final String JAVA_SCRIPT_ENABLE_ANDROID = "javaScriptEnabledAndroid";
@@ -49,10 +47,6 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         view.getSettings().setLoadsImagesAutomatically(automaticallyAdjustContentInsets);
     }
 
-   @ReactProp(name = BOUNCES)
-    public void setBounces(ReactWebView view,boolean bounces){
-       // Unrealized
-    }
 
     @ReactProp(name = CONTENT_INSET)
     public void setContentInset(ReactWebView view,ReadableMap map){
@@ -74,18 +68,13 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     }
 
     @ReactProp(name = RENDER_ERROR)
-    public void setRenderError(ReactWebView view,Boolean renderError){
+    public void setRenderError(ReactWebView view,boolean renderError){
         // Unrealized
     }
 
     @ReactProp(name = RENDER_LOADING)
-    public void setRenderLoading(ReactWebView view,Boolean renderLoading){
+    public void setRenderLoading(ReactWebView view,boolean renderLoading){
         // Unrealized
-    }
-
-    @ReactProp(name = SCROLL_ENABLED)
-    public void setScrollEnabled(ReactWebView view, boolean scrollEnabled) {
-        view.setScrollEnabled(scrollEnabled);
     }
 
     @ReactProp(name = START_IN_LOADING_STATE)
