@@ -44,14 +44,16 @@ public class ReactWebView extends WebView {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(getId(), SystemClock.uptimeMillis(),
-                    true, url, view.canGoBack(), view.canGoForward()));
+            eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(
+                    getId(), SystemClock.uptimeMillis(), view.canGoBack(), view.canGoForward(),
+                    url, view.getTitle(), true));
         }
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(getId(), SystemClock.uptimeMillis(),
-                    true,url, view.canGoBack(), view.canGoForward()));
+            eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(
+                    getId(), SystemClock.uptimeMillis(), view.canGoBack(), view.canGoForward(),
+                    url, view.getTitle(), true));
         }
     }
 
@@ -78,9 +80,9 @@ public class ReactWebView extends WebView {
         eventWebClient.setInjectedJavaScript(injectedJavaScript);
     }
 
-    public void setScrollEnabled(boolean scrollEnable){
-        setVerticalScrollBarEnabled(scrollEnable);
-        setHorizontalScrollBarEnabled(scrollEnable);
+    public void setScrollEnabled(boolean scrollEnabled) {
+        setVerticalScrollBarEnabled(scrollEnabled);
+        setHorizontalScrollBarEnabled(scrollEnabled);
     }
 
 }

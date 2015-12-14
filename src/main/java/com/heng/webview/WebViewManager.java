@@ -1,6 +1,7 @@
 package com.heng.webview;
 
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -48,19 +49,19 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         view.getSettings().setLoadsImagesAutomatically(automaticallyAdjustContentInsets);
     }
 
-//   @ReactProp(name = BOUNCES)
-//    public void setBounces(ReactWebView view,boolean bounces){
-//       // Unrealized
-//    }
+   @ReactProp(name = BOUNCES)
+    public void setBounces(ReactWebView view,boolean bounces){
+       // Unrealized
+    }
 
-//    @ReactProp(name = CONTENT_INSET)
-//    public void setContentInset(ReactWebView view,ReadableMap map){
-//        int top = map.getInt("top");
-//        int left = map.getInt("left");
-//        int bottom = map.getInt("bottom");
-//        int right = map.getInt("right");
-//        view.setPadding(left, top, right, bottom);
-//    }
+    @ReactProp(name = CONTENT_INSET)
+    public void setContentInset(ReactWebView view,ReadableMap map){
+        int top = map.getInt("top");
+        int left = map.getInt("left");
+        int bottom = map.getInt("bottom");
+        int right = map.getInt("right");
+        view.setPadding(left, top, right, bottom);
+    }
 
     @ReactProp(name = HTML)
     public void setHtml(ReactWebView view, String html) {
@@ -72,25 +73,25 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
         view.setInjectedJavaScript(injectedJavaScript);
     }
 
-//    @ReactProp(name = RENDER_ERROR)
-//    public void setRenderError(ReactWebView view,Boolean value){
-//        // Unrealized
-//    }
-
-//    @ReactProp(name = RENDER_LOADING)
-//    public void setRenderLoading(ReactWebView view,Boolean value){
-//        // Unrealized
-//    }
-
-    @ReactProp(name = SCROLL_ENABLED,defaultBoolean = false)
-    public void setScrollEnabled(ReactWebView view, boolean scrollEnable) {
-        view.setScrollEnabled(scrollEnable);
+    @ReactProp(name = RENDER_ERROR)
+    public void setRenderError(ReactWebView view,Boolean renderError){
+        // Unrealized
     }
 
-//    @ReactProp(name = START_IN_LOADING_STATE)
-//    public void setStartInLoadingState(ReactWebView view,boolean startInLoadingState){
-//        // Unrealized
-//    }
+    @ReactProp(name = RENDER_LOADING)
+    public void setRenderLoading(ReactWebView view,Boolean renderLoading){
+        // Unrealized
+    }
+
+    @ReactProp(name = SCROLL_ENABLED)
+    public void setScrollEnabled(ReactWebView view, boolean scrollEnabled) {
+        view.setScrollEnabled(scrollEnabled);
+    }
+
+    @ReactProp(name = START_IN_LOADING_STATE)
+    public void setStartInLoadingState(ReactWebView view,boolean startInLoadingState){
+        // Unrealized
+    }
 
     @ReactProp(name = URL)
     public void setUrl(ReactWebView view, String url) {
@@ -137,7 +138,7 @@ public class WebViewManager extends SimpleViewManager<ReactWebView> {
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-                NavigationStateChangeEvent.EVENT_NAME, MapBuilder.of("registrationName", "onNavigationStateChange")
+                NavigationStateChangeEvent.EVENT_NAME, MapBuilder.of("registrationName", ON_NAVIGATION_STATE_CHANGE)
         );
     }
 }
