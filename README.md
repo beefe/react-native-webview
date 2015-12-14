@@ -119,22 +119,18 @@ var styles = StyleSheet.create({
 ```
 
 ## 已经实现的属性和方法
-#### Props
-```javascript
-automaticallyAdjustContentInsets  bool
-html  string
-injectedJavaScript  string
-onNavigationStateChange  function
-url  string
-javaScriptEnabledAndroid  bool
-```
+### Props
+##### automaticallyAdjustContentInsets  bool
+##### html  string
+##### injectedJavaScript  string
+##### onNavigationStateChange  function
+##### url  string
+##### javaScriptEnabledAndroid  bool
 
-#### method
-```javascript
-goBack
-goForward
-reload
-```
+### method
+##### goBack
+##### goForward
+##### reload
 
 ## Notes
 
@@ -155,20 +151,21 @@ android {
 dependencies {
     compile 'com.facebook.react:react-native:0.16.1'  //@
 }
+```
 
 ## Remark
-在模拟器运行会提示:
+在模拟器运行会提示以下错误:
 Webpage not available
 
-The webpage at ... could not be loaded because:
+The webpage at "xxx" could not be loaded because:
 
 net::ERR_NAME_NOT_RESOLVED
 
-暂未寻找解决方案,真机运行OK,真机运行需要[打包导出](http://facebook.github.io/react-native/docs/signed-apk-android.html#content)
+暂未寻找解决方案,目前建议[打包导出](http://facebook.github.io/react-native/docs/signed-apk-android.html#content)后在真机运行
 
 ## Run Renderings
 <center>
-    <img src="https://github.com/shexiaoheng/react-native-webview/blob/master/Screenshot/result_one.png"
+    <img src="https://github.com/beefe/react-native-webview/blob/master/Screenshot/result_one.jpeg"
     width="300" height="450"/>
 </center>
-```
+
