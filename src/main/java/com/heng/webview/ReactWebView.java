@@ -29,7 +29,6 @@ public class ReactWebView extends WebView {
 
     protected class EventWebClient extends WebViewClient {
 
-
         String injectedJavaScript;
 
         @Override
@@ -43,17 +42,20 @@ public class ReactWebView extends WebView {
         }
 
         @Override
-        public void onPageFinished(WebView view, String url) {
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
             eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(
                     getId(), SystemClock.uptimeMillis(), view.canGoBack(), view.canGoForward(),
                     url, view.getTitle(), true));
         }
 
         @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        public void onPageFinished(WebView view, String url) {
             eventDispatcher.dispatchEvent(new NavigationStateChangeEvent(
-                    getId(), SystemClock.uptimeMillis(), view.canGoBack(), view.canGoForward(),
+                    getId(), SystemClock.uptimeMillis(),false, view.canGoForward(),
                     url, view.getTitle(), true));
+            if(this.injectedJavaScript != null) {
+                view.loadUrl("javascript:(function() { " + injectedJavaScript + "})()");
+            }
         }
     }
 

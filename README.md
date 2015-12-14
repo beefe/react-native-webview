@@ -74,14 +74,13 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
-  ToastAndroid,
 } = React;
 
 var WebView = require('react-native-webview');
 
 var WebViewTest = React.createClass({
     goBack: function() {
-      this.refs.webview.goBack(); 
+      this.refs.webview.goBack();
     },
     goForward: function() {
       this.refs.webview.goForward();
@@ -90,11 +89,11 @@ var WebViewTest = React.createClass({
       this.refs.webview.reload();
     },
     _onNavigationStateChange: function(event) {
-      ToastAndroid.show(event.canGoBack + '',ToastAndroid.SHORT);
-      ToastAndroid.show(event.canGoForward + '',ToastAndroid.SHORT);
-      ToastAndroid.show(event.url ,ToastAndroid.SHORT);
-      ToastAndroid.show(event.title ,ToastAndroid.SHORT);
-      ToastAndroid.show(event.loading + '',ToastAndroid.SHORT);
+      //event.canGoBack
+      //event.canGoForward
+      //event.url
+      //event.title
+      //event.loading
     },
     render: function() {
     var reqUrl = "https://github.com/";
@@ -117,7 +116,24 @@ var styles = StyleSheet.create({
 });
 
 ...
+```
 
+## 已经实现的属性和方法
+#### Props
+```javascript
+automaticallyAdjustContentInsets  bool
+html  string
+injectedJavaScript  string
+onNavigationStateChange  function
+url  string
+javaScriptEnabledAndroid  bool
+```
+
+#### method
+```javascript
+goBack
+goForward
+reload
 ```
 
 ## Notes
@@ -140,5 +156,19 @@ dependencies {
     compile 'com.facebook.react:react-native:0.16.1'  //@
 }
 
+## Remark
+在模拟器运行会提示:
+Webpage not available
 
+The webpage at ... could not be loaded because:
+
+net::ERR_NAME_NOT_RESOLVED
+
+暂未寻找解决方案,真机运行OK,真机运行需要[打包导出](http://facebook.github.io/react-native/docs/signed-apk-android.html#content)
+
+## Run Renderings
+<center>
+    <img src="https://github.com/shexiaoheng/react-native-webview/blob/master/Screenshot/result_one.png"
+    width="300" height="450"/>
+</center>
 ```
