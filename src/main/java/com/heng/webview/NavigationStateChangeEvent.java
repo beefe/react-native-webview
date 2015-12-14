@@ -44,7 +44,7 @@ public class NavigationStateChangeEvent extends Event<NavigationStateChangeEvent
         eventData.putBoolean("canGoForward", canGoForward);
         eventData.putString("url", url);
         eventData.putString("title", title);
-        eventData.putBoolean("title", loading);
+        eventData.putBoolean("loading", loading);
         return eventData;
     }
 
