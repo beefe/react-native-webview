@@ -1,0 +1,22 @@
+{
+  "name": "react-native-webview",
+  "version": "1.0.8",
+  "description": "andorid webview for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beefe/react-native-webview.git"
+  },
+  "keywords": [
+    "react-native-webview"
+  ],
+  "author": "shexiaoheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beefe/react-native-webview/issues"
+  },
+  "homepage": "https://github.com/beefe/react-native-webview#readme"
+}
