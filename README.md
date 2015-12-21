@@ -1,6 +1,37 @@
 # react-native-webview
 android webview for react-native
 
+## 已经实现的属性和方法
+### Props
+##### automaticallyAdjustContentInsets
+```javascript
+bool
+```
+##### html
+```javascript
+string
+```
+##### injectedJavaScript
+```javascript
+string
+```
+##### onNavigationStateChange
+```javascript
+function
+```
+##### url
+```javascript
+string
+```
+##### javaScriptEnabledAndroid
+```javascript
+bool
+```
+### method
+* goBack
+* goForward
+* reload
+
 ## Installation and How to use
 
 #### Step 1 - NPM Install
@@ -117,37 +148,6 @@ var styles = StyleSheet.create({
 
 ...
 ```
-
-## 已经实现的属性和方法
-### Props
-##### automaticallyAdjustContentInsets
-```javascript
-bool
-```
-##### html
-```javascript
-string
-```
-##### injectedJavaScript
-```javascript
-string
-```
-##### onNavigationStateChange
-```javascript
-function
-```
-##### url
-```javascript
-string
-```
-##### javaScriptEnabledAndroid
-```javascript
-bool
-```
-### method
-##### goBack
-##### goForward
-##### reload
 
 ## Notes
 
