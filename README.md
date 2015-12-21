@@ -3,27 +3,27 @@ android webview for react-native
 
 ## 已经实现的属性和方法
 ### Props
-##### automaticallyAdjustContentInsets
+* automaticallyAdjustContentInsets
 ```javascript
 bool
 ```
-##### html
+* html
 ```javascript
 string
 ```
-##### injectedJavaScript
+* injectedJavaScript
 ```javascript
 string
 ```
-##### onNavigationStateChange
+* onNavigationStateChange
 ```javascript
 function
 ```
-##### url
+* url
 ```javascript
 string
 ```
-##### javaScriptEnabledAndroid
+* javaScriptEnabledAndroid
 ```javascript
 bool
 ```
